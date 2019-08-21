@@ -1,0 +1,27 @@
+<h1>GitHub Action for Eleventy</h1>
+<p>Use this action to build your static website with <a href="https://www.11ty.io/">Eleventy</a>.</p>
+<p>To use it, create a <code>.github/workflows/eleventy_build.yml</code> file which <a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idsteps">uses this repository</a> as an action.</p>
+<p>Here's an example which builds the site with this action, then deploys to GitHub Pages with <a href="https://github.com/peaceiris/actions-gh-pages">peaceiris/actions-gh-pages</a>:</p>
+<pre><code class="language-yaml">name: Eleventy Build
+on: [push]
+
+jobs:
+  build_deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+      - name: Build
+        uses: TartanLlama/actions-eleventy@v1.1
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v1.1.0
+        env:
+          PUBLISH_DIR: _site 
+          PUBLISH_BRANCH: gh-pages
+          GITHUB_TOKEN: $
+</code></pre>
+<p>You can pass additional arguments to <code>eleventy</code> through the <code>args</code> option:</p>
+<pre><code class="language-yaml">- name: Build
+  uses: TartanLlama/actions-eleventy@v1.1
+  with:
+    args: &lt;additional arguments&gt;
+</code></pre>
