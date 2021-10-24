@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Install project dependencies"
-npm install
+npm ci
 
 echo "Running eleventy"
 eleventy $INPUT_ARGS
