@@ -4,6 +4,8 @@ WORKDIR /usr/app
 
 RUN npm install --unsafe-perm=true -g @11ty/eleventy
 RUN npm install --unsafe-perm=true
-COPY entrypoint.sh /
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+
+COPY entrypoint.sh /usr/app
+RUN chmod +x /usr/app/entrypoint.sh
+
+ENTRYPOINT ["/usr/app/entrypoint.sh"]
